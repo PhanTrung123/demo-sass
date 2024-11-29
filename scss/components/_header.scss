@@ -1,4 +1,8 @@
+@use "../base/variables";
+@use "../base/mixin";
+
 .header {
-  height: $header-height;
+  height: variables.$header-height;
+  @include mixin.flexCenter;
   background: orange;
 }

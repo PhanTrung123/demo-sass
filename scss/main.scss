@@ -10,13 +10,17 @@
 */
 
 //nạp base
-@import "base/variables";
-@import "base/mixin";
+@use "base/variables";
+@use "base/mixin";
+@use "components/header";
 
-@import "base/reset";
-@import "base/common";
-
-//nap components
-@import "components/header";
-@import "components/navbar";
-@import "components/sidebar";
+// @import "base/reset";
+// @import "base/common";
+// //nap components
+// @import "components/header";
+// @import "components/navbar";
+// @import "components/sidebar";
+h1 {
+  color: variables.$primary-color;
+  @include mixin.flexCenter;
+}

@@ -8,5 +8,19 @@
  navigation
  sidebar,...
 */
+.header {
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: orange;
+}
+
+h1 {
+  color: orange;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 /*# sourceMappingURL=main.css.map */
