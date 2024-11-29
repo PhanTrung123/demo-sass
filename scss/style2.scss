@@ -1,0 +1,206 @@
+$pri-color: blue;
+$sec-color: gray;
+$suc-color: green;
+$dan-color: red;
+$warn-color: yellow;
+$info-color: pink;
+
+.group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+%btn-base {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  background: $pri-color;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.btn-primary {
+  @extend %btn-base;
+  background: $pri-color;
+}
+
+.btn-secondary {
+  @extend %btn-base;
+  background: $sec-color;
+}
+.btn-success {
+  @extend %btn-base;
+  background: $suc-color;
+}
+.btn-danger {
+  @extend %btn-base;
+  background: $dan-color;
+}
+.btn-warning {
+  color: #000;
+  @extend %btn-base;
+  background: $warn-color;
+}
+.btn-info {
+  @extend %btn-base;
+  background: $info-color;
+}
+
+// <!-- ví dụ 3: mixin (thuộc tính sài chung dùng cho các đoạn code bị lặp) -->
+// dạng 1
+@mixin flexCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// @mixin size($width: 200px, $height: 200px) {
+@mixin size($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+// mixin lồng mixin
+@mixin move($x, $y: null) {
+  translate: $x $y;
+}
+
+@mixin border(
+  $topLeft,
+  $topRight: $topLeft,
+  $botRight: $topLeft,
+  $botLeft: $topLeft
+) {
+  border-radius: $topLeft $topRight $botRight $botLeft;
+  @include move(100px);
+}
+
+.center {
+  @include flexCenter;
+  @include size(200px, 200px);
+  @include border(30px); // tat ca bo cong 30px
+  background: orange;
+  font: {
+    size: 30px;
+    weight: 600;
+  }
+}
+
+.box {
+  @include flexCenter;
+  @include size(150px, 150px);
+  @include border(30px, $botLeft: 60px);
+  margin-top: 30px;
+  background: olivedrab;
+  font: {
+    size: 30px;
+    weight: 600;
+  }
+}
+
+//--------------------------------------------
+//dạng 2: tao grid
+
+@mixin grid($col, $spacing) {
+  --column: #{$col};
+  --spacing: #{$spacing};
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: var(--spacing);
+  margin-left: calc(-1 * var(--spacing));
+
+  > * {
+    width: calc(100% / var(--column) - var(--spacing));
+    margin-left: var(--spacing);
+  }
+}
+
+@mixin screen($device) {
+  @if $device == tablet {
+    @media (max-width: 991.98px) {
+      @content;
+    }
+  }
+  @if $device == mobile {
+    @media (max-width: 575.98px) {
+      @content;
+    }
+  }
+}
+
+.list {
+  @include grid(5, 30px);
+
+  //tablet
+  @include screen(tablet) {
+    --column: 2;
+    --spacing: 20px;
+  }
+  //mobile
+  @include screen(mobile) {
+    --column: 1;
+    --spacing: 20px;
+  }
+
+  .item {
+    background-color: olivedrab;
+    font: {
+      size: 20px;
+      weight: 600;
+    }
+  }
+}
+
+//----------//
+.news-list {
+  @include grid(2, 30px);
+  margin-top: 30px;
+
+  .new-item {
+    background-color: rosybrown;
+    padding: 30px;
+  }
+}
+
+//---------------------------------------//
+
+@mixin position($pos) {
+  @if $pos == top-left {
+    top: 0;
+    left: 0;
+  }
+  @if $pos == top-right {
+    top: 0;
+    right: 0;
+  }
+  @if $pos == bottom-left {
+    bottom: 0;
+    left: 0;
+  }
+  @if $pos == bottom-right {
+    bottom: 0;
+    right: 0;
+  }
+  @if $pos == center {
+    top: 50%;
+    left: 50%;
+    translate: -50% 50%;
+  }
+}
+
+.container2 {
+  position: relative;
+  height: 400px;
+  background: #ccc;
+  margin-top: 50px;
+
+  .item {
+    @include position(center);
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: olivedrab;
+  }
+}

@@ -1,0 +1,22 @@
+/*
+ var (khai bao bien)
+ mixins
+ reset
+ common
+
+ header
+ navigation
+ sidebar,...
+*/
+
+//nạp base
+@import "base/variables";
+@import "base/mixin";
+
+@import "base/reset";
+@import "base/common";
+
+//nap components
+@import "components/header";
+@import "components/navbar";
+@import "components/sidebar";

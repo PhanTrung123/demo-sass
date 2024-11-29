@@ -1,0 +1,133 @@
+.group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.btn-info, .btn-warning, .btn-danger, .btn-success, .btn-secondary, .btn-primary {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  background: blue;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.btn-primary {
+  background: blue;
+}
+
+.btn-secondary {
+  background: gray;
+}
+
+.btn-success {
+  background: green;
+}
+
+.btn-danger {
+  background: red;
+}
+
+.btn-warning {
+  color: #000;
+  background: yellow;
+}
+
+.btn-info {
+  background: pink;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 200px;
+  border-radius: 30px 30px 30px 30px;
+  translate: 100px;
+  background: orange;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  height: 150px;
+  border-radius: 30px 30px 30px 60px;
+  translate: 100px;
+  margin-top: 30px;
+  background: olivedrab;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.list {
+  --column: 5;
+  --spacing: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: var(--spacing);
+  margin-left: calc(-1 * var(--spacing));
+}
+.list > * {
+  width: calc(100% / var(--column) - var(--spacing));
+  margin-left: var(--spacing);
+}
+@media (max-width: 991.98px) {
+  .list {
+    --column: 2;
+    --spacing: 20px;
+  }
+}
+@media (max-width: 575.98px) {
+  .list {
+    --column: 1;
+    --spacing: 20px;
+  }
+}
+.list .item {
+  background-color: olivedrab;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.news-list {
+  --column: 2;
+  --spacing: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: var(--spacing);
+  margin-left: calc(-1 * var(--spacing));
+  margin-top: 30px;
+}
+.news-list > * {
+  width: calc(100% / var(--column) - var(--spacing));
+  margin-left: var(--spacing);
+}
+.news-list .new-item {
+  background-color: rosybrown;
+  padding: 30px;
+}
+
+.container2 {
+  position: relative;
+  height: 400px;
+  background: #ccc;
+  margin-top: 50px;
+}
+.container2 .item {
+  top: 50%;
+  left: 50%;
+  translate: -50% 50%;
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: olivedrab;
+}
+
+/*# sourceMappingURL=style2.css.map */
